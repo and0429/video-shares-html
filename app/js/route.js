@@ -1,10 +1,10 @@
 'use strict';
 
-share.config(['$routeProvider', function($routeProvider) {
-	$routeProvider.when({
-
-	}).
-  	otherwise({
-  		redirectTo: '/view1'
+shareApp.config(['$routeProvider', function($routeProvider) {
+	$routeProvider.when('/123', {
+		templateUrl: '../tpls/123.html'
+	}).otherwise({
+		templateUrl: '../tpls/123.html'
+  		/*redirectTo: '/index.html'*/
   	});
 }]);
