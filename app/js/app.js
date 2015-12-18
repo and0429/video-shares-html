@@ -1,8 +1,12 @@
 'use strict';
 
 // Declare app level module which depends on views, and components
-var shareApp = angular.module('shareApp', [
-  'ngRoute'
+var ShareApp = angular.module('ShareApp', [
+  'ngRoute', 
+  'VideoShareControllers',
+  'VideoShareServices',
+  'VideoShareFilters'
 ]);
+
 
 
