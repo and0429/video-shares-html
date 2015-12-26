@@ -25,7 +25,12 @@ ShareApp.config(['$stateProvider', '$urlRouterProvider',
       	templateUrl: "tpls/456.html"
     		}
     )
-
+    .state(
+      'datadictionry', {
+        url: "/datadictionry",
+        templateUrl: "tpls/456.html"
+        }
+    )
 
 
 }]);
