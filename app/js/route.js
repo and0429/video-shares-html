@@ -3,7 +3,7 @@
 ShareApp.config(['$stateProvider', '$urlRouterProvider', 
 	function($stateProvider, $urlRouterProvider) {
 
-		$urlRouterProvider.otherwise('/index');	
+		$urlRouterProvider.otherwise('/datadictionry');	
 
 
 		$stateProvider
@@ -25,10 +25,17 @@ ShareApp.config(['$stateProvider', '$urlRouterProvider',
       	templateUrl: "tpls/456.html"
     		}
     )
+    /*数据字典列表*/
     .state(
       'datadictionry', {
         url: "/datadictionry",
-        templateUrl: "tpls/456.html"
+        templateUrl: "tpls/system/data-dictionary/index.html"
+        }
+    )
+    .state(
+      'datadictionry_edit', {
+        url: "/datadictionry/edit",
+        templateUrl: "tpls/system/data-dictionary/edit.html"
         }
     )
 
