@@ -4,22 +4,43 @@
   </div>
   <div class="modal-body">
     <form class="form-horizontal">
+            <div class="form-group">
+        <label class="col-sm-3 control-label">Default</label>
+        <div class="col-sm-6">
+
+          <ui-select ng-model="person.selected" theme="bootstrap">
+            <ui-select-match placeholder="Select or search a person in the list...">{{$select.selected.name}}</ui-select-match>
+            <ui-select-choices repeat="item in people | filter: $select.search">
+              <div ng-bind-html="item.name | highlight: $select.search"></div>
+              <small ng-bind-html="item.email | highlight: $select.search"></small>
+            </ui-select-choices>
+          </ui-select>
+
+        </div>
+      </div>
       <div class="form-group">
         <label for="keyinput" class="control-label col-sm-2">键</label>
         <div class="col-sm-9">
-          <input type="text" class="form-control" id="keyinput" placeholder="key">
+          <input ng-model="dd.key" type="text" class="form-control" id="keyinput" placeholder="请输出键">
         </div>
       </div>
       <div class="form-group">
         <label for="valueinput" class="control-label col-sm-2">键</label>
         <div class="col-sm-9">
-          <input type="text" class="form-control" id="valueinput" placeholder="value">
+          <input ng-model="dd.value" type="text" class="form-control" id="valueinput" placeholder="请输入值">
         </div>
       </div>
       <div class="form-group">
-        <label for="valueinput" class="control-label col-sm-2">类型</label>
+        <label class="col-sm-2 control-label">类型</label>
         <div class="col-sm-9">
-          <input type="text" class="form-control" id="valueinput" placeholder="value">
+          <ui-select ng-model="dd.type" theme="bootstrap">
+          <ui-select-match placeholder="请输入或者搜索">
+            {{ $select.selected }}
+          </ui-select-match>
+          <ui-select-choices repeat="item in dd.allType | filter: $select.search">
+            <div ng-bind-html="item | highlight: $select.search"></div>
+          </ui-select-choices>
+          </ui-select>
         </div>
       </div>
     </form>

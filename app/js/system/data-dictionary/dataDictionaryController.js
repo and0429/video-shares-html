@@ -26,16 +26,21 @@ System.controller('DataDictionaryCtrl', ['$uibModal', '$scope', 'DataDictionaryS
         }
     })
 
+    $scope.dd = {};
 
     $scope.edit = function(param){
 
-        $scope.items = ['item1', 'item2', 'item3'];
+
+
 
         if (param) {
             console.log("编辑");
         }else{
             console.log("新增");
         }
+
+
+
         /*$state.go('datadictionry_edit');*/
         var modalInstance = $uibModal.open({
           animation: true,
@@ -46,7 +51,10 @@ System.controller('DataDictionaryCtrl', ['$uibModal', '$scope', 'DataDictionaryS
           /*size: 'lg',*/
           resolve: {
             items: function(){
-                return $scope.items;
+                return DataDictionaryService.getAllType().then(function(resp){
+                  $scope.dd.allType = resp;
+                    return $scope.dd;
+                });
             }
           }
         });
@@ -68,7 +76,35 @@ System.controller('DataDictionaryCtrl', ['$uibModal', '$scope', 'DataDictionaryS
  * 数据字典编辑模态框
  */
 System.controller('DictionaryEditCtrl', ['$uibModalInstance', '$scope', 'items', function($uibModalInstance, $scope, items){
-     $scope.items = items;
+
+    console.log(items);
+
+     $scope.dd = items;
+
+  $scope.disabled = false;
+  $scope.searchEnabled = false;
+
+  $scope.setInputFocus = function (){
+    $scope.$broadcast('UiSelectDemo1');
+  };
+
+  $scope.enable = function() {
+    $scope.disabled = false;
+  };
+
+  $scope.disable = function() {
+    $scope.disabled = true;
+  };
+
+  $scope.enableSearch = function() {
+    $scope.searchEnabled = true;
+  };
+
+  $scope.disableSearch = function() {
+    $scope.searchEnabled = false;
+  };
+
+
      $scope.ok = function(){
         $uibModalInstance.close($scope.items);
      };
