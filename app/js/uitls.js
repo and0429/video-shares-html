@@ -1,5 +1,4 @@
 'user strict';
-
 ShareApp.service('Utils', [function(){
 
 	function Service(){}
@@ -13,7 +12,7 @@ ShareApp.service('Utils', [function(){
 
 					function(res){
 						console.log(res);
-						window.alert(res.status)
+						window.alert(res.status);
 					}
 			);
 		}
